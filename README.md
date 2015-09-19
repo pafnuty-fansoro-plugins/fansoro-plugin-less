@@ -89,4 +89,4 @@ return array(
 
 
 ## License 
-[MIT](https://github.com/pafnuty/morfy-statistics/blob/master/LICENSE)
+[MIT](https://github.com/pafnuty/morfy-less/blob/master/LICENSE)
