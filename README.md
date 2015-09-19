@@ -16,7 +16,7 @@ Plugin to compile LESS files in Morfy CMS.
 
 
 ## Configuration
-Just add `statistics` to `plugins` array in gonfig.php
+Just add `less` to `plugins` array in `config.php`
 ```php
 # config.php
 return array(
