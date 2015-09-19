@@ -24,7 +24,7 @@ return array(
     'plugins' => array(
         'markdown',
         'sitemap',
-        'less', // <= Enable Statistics Plugin
+        'less', // <= Enable Less Compiler Plugin
     )
     ...
 );
