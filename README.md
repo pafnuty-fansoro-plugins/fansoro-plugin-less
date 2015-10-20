@@ -1,6 +1,12 @@
 # Less Compiler Plugin for [Morfy CMS](http://morfy.org/)
 
+![version](https://img.shields.io/badge/version-2.0.0-brightgreen.svg?style=flat-square "Version")
+![DLE](https://img.shields.io/badge/Morfy-1.1.x-green.svg?style=flat-square "Morfy Version")
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://raw.githubusercontent.com/pafnuty/morfy-less/master/LICENSE)
+
 Plugin to compile LESS files in Morfy CMS.
+
+**If You use the old version of Morfy :older_man: go to [1.0.0 branch](https://github.com/pafnuty/morfy-less/tree/v1.0.0)**
 
 
 ## Advantages
@@ -10,36 +16,22 @@ Plugin to compile LESS files in Morfy CMS.
 - Use the [best php class](https://github.com/pafnuty/less.php) for less compile.
 
 
-## Install
-1. Place `less` folder in `plugins` folder into Morfy CMS.
-2. Edit `config.php`.
-
-
-## Configuration
-Just add `less` to `plugins` array in `config.php`
-```php
-# config.php
-return array(
-    ...
-    'plugins' => array(
-        'markdown',
-        'sitemap',
-        'less', // <= Enable Less Compiler Plugin
-    )
-    ...
-);
-```
+## Install & Configuration
+See [this instruction](http://morfy.org/documentation/plugins/plugins-installation)
 
 
 ## Usage
-```html
+- Place less files in the folder **/themes/YOUR_THEME/less/**
+- Place `{Morfy::runAction('getCss')}` in **layout.tpl** file.
+
+**Example:**
+
+```smarty
+{* layout.tpl *}
 <head>
     ...
-    <?php 
-    // Run Less Compiler Plugin
-    Morfy::factory()->runAction('getCss');
-    ?>
-    <link rel="stylesheet" href="<?php echo $config['site_url']?>/themes/<?php echo $config['site_theme']?>/assets/css/bootstrap.css" rel="stylesheet">
+    {Morfy::runAction('getCss')}
+    <link href="{$.site.url}/themes/{$.site.theme}/assets/css/bootstrap.css" rel="stylesheet">
     ...
 </head>
 ```
@@ -47,40 +39,53 @@ return array(
 
 ## Advanced configuration
 **If necessary, you can configure the plugin as needed.**
-```php
-# config.php
-return array(
-    ...
-    'plugins' => array(
-        ...
-    ),
+```yml
+# /plugins/less/less.yml
 
-    // Less Compiler config ->
-    'less' => array(
-        // Assets folder into theme folder, which contains a folder less
-        // default: '/assets'
-        'assetsFolder' => '/custom_styles', 
-
-        // File names for compile without the extension
-        // default:  array('bootstrap')
-        'fileNames' => array('main'), 
-
-        // Output path for CSS file
-        // default: '/css'
-        'outputPath' => '/styles', 
-
-        // Compress CSS file
-        // default: true
-        'compress' => false, 
-
-        // Generate Sourse Map
-        // default: false
-        'sourceMap' => true, 
-
-    ),
-    // <- Less Compiler config
-);
+...
+enabled: true
+config: 
+  assetsFolder: '/styles'
+  fileNames: 
+    - 'main'
+  outputPath: '/styles'
+  compress: false
+  sourceMap: true
 ```
+
+<table>
+    <tr>
+        <th>Variable</th>
+        <th>Description</th>
+        <th>Default Value</th>
+    </tr>
+    <tr>
+        <td><code>assetsFolder</code></td>
+        <td>Assets folder into theme folder, which contains a folder less</td>
+        <td><code>/assets</code></td>
+    </tr>
+    <tr>
+        <td><code>fileNames</code></td>
+        <td>File names for compile without the extension</td>
+        <td><code>array('bootstrap')</code></td>
+    </tr>
+    <tr>
+        <td><code>outputPath</code></td>
+        <td>Output path for CSS file</td>
+        <td><code>/css</code></td>
+    </tr>
+    <tr>
+        <td><code>compress</code></td>
+        <td>Compress CSS file</td>
+        <td><code>false</code></td>
+    </tr>
+    <tr>
+        <td><code>sourceMap</code></td>
+        <td>Generate Sourse Map</td>
+        <td><code>false</code></td>
+    </tr>
+</table>
+
 
 **If you need to visually make the error output of compilation in accordance with your requirements.**
 

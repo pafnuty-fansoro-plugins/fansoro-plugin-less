@@ -5,64 +5,52 @@
  *  @package Morfy
  *  @subpackage Plugins
  *  @author Pavel Belousov / pafnuty
- *  @copyright 2015 Romanenko Sergey / Awilum
- *  @version 1.0.0
+ *  @version 2.0.0
+ *  @license https://github.com/pafnuty/morfy-less/blob/master/LICENSE MIT
  *
  */
 
-/**
- * Add to config.php this code for custom settings
- * 'less' => array(
- *     'assetsFolder' => '/styles'
- *     'fileNames'    => array('main'),
- *     'outputPath'   => '/styles',
- *     'compress'     => false,
- *     'sourceMap'    => true,
- * ),
- */
-Morfy::factory()->addAction('getCss', function () {
-    require_once PLUGINS_PATH . '/less/Less/Autoloader.php';
-    require_once PLUGINS_PATH . '/less/lessCompiler.php';
-    
-    if (!defined('ROOT_DIR')) {
-        define('ROOT_DIR', str_replace('/plugins', '', PLUGINS_PATH));
-    }
-    
-    \Less_Autoloader::register();
 
-    $lessConfig = Morfy::$config['less'];
+Morfy::addAction('getCss', function () {
+	require_once PLUGINS_PATH . '/less/Less/Autoloader.php';
+	require_once PLUGINS_PATH . '/less/lessCompiler.php';
 
-    // Assets folder into theme folder, which contains a folder less
-    $assetsFolder = (isset($lessConfig['assetsFolder'])) ? $lessConfig['assetsFolder'] : '/assets';
+	\Less_Autoloader::register();
 
-    // File names for compile without the extension
-    $fileNames = (isset($lessConfig['fileNames'])) ? $lessConfig['fileNames'] : array('bootstrap');
+	$lessConfig = Morfy::$plugins['less']['config'];
 
-    // Output path for CSS file
-    $outputPath = (isset($lessConfig['outputPath'])) ? $lessConfig['outputPath'] . '/' : '/css/';
+	// Assets folder into theme folder, which contains a folder less
+	$assetsFolder = (isset($lessConfig['assetsFolder'])) ? $lessConfig['assetsFolder'] : '/assets';
 
-    // Compress CSS file
-    $compress = (isset($lessConfig['compress'])) ? $lessConfig['compress'] : true;
+	// File names for compile without the extension
+	$fileNames = (isset($lessConfig['fileNames'])) ? $lessConfig['fileNames'] : array('bootstrap');
 
-    // Generate Sourse Map
-    $sourceMap = (isset($lessConfig['sourceMap'])) ? $lessConfig['sourceMap'] : false;
+	// Output path for CSS file
+	$outputPath = (isset($lessConfig['outputPath'])) ? $lessConfig['outputPath'] . '/' : '/css/';
 
-    $localSpaceFolder = '/themes/' . Morfy::$config['site_theme'] . $assetsFolder;
+	// Compress CSS file
+	$compress = (isset($lessConfig['compress'])) ? $lessConfig['compress'] : true;
 
-    $compile = new lessCompiler(ROOT_DIR, $localSpaceFolder, $fileNames, $outputPath, $compress, $sourceMap);
+	// Generate Sourse Map
+	$sourceMap = (isset($lessConfig['sourceMap'])) ? $lessConfig['sourceMap'] : false;
 
-    // The output is an array
-    $file = $compile->compile();
+	$localSpaceFolder = '/themes/' . Morfy::$site['theme'] . $assetsFolder;
 
-    // If in the array there is an error - so the compilation failed, and you have to report it
-    if ($file['error']) {
- 
-        if (!file_exists(ROOT_DIR . $localSpaceFolder . '/css/-less-error.css')) {
-            $errorStyle = '<style>' . file_get_contents(PLUGINS_PATH . '/less/-less-error.css') . '</style>';
-        } else {
-            $errorStyle = '<link rel="stylesheet" href="' . $localSpaceFolder . '/css/-less-error.css">';
-        }
-        $errorText = '<div class="less-error-wrapper"><div class="less-error-content"><div class="less-error"><div class="less-error-header">LessCompiler Error!</div><pre>' . str_replace(ROOT_DIR, '', $file['error']) . '</pre></div></div></div>';
-        echo $errorStyle . $errorText;
-    }
+	$compile = new lessCompiler(ROOT_DIR, $localSpaceFolder, $fileNames, $outputPath, $compress, $sourceMap);
+
+	// The output is an array
+	$file = $compile->compile();
+
+	// If in the array there is an error - so the compilation failed, and you have to report it
+	if ($file['error']) {
+
+		if (!file_exists(ROOT_DIR . $localSpaceFolder . '/css/-less-error.css')) {
+			$errorStyle = '<style>' . file_get_contents(PLUGINS_PATH . '/less/-less-error.css') . '</style>';
+		} else {
+			$errorStyle = '<link rel="stylesheet" href="' . $localSpaceFolder . '/css/-less-error.css">';
+		}
+		$errorText = '<div class="less-error-wrapper"><div class="less-error-content"><div class="less-error"><div class="less-error-header">LessCompiler Error!</div><pre>' . str_replace(ROOT_DIR, '', $file['error']) . '</pre></div></div></div>';
+		echo $errorStyle . $errorText;
+	}
 });
+
