@@ -12,10 +12,8 @@
 
 
 Morfy::addAction('getCss', function () {
-	require_once PLUGINS_PATH . '/less/Less/Autoloader.php';
+	require_once PLUGINS_PATH . '/less/Less/Less.php';
 	require_once PLUGINS_PATH . '/less/lessCompiler.php';
-
-	\Less_Autoloader::register();
 
 	$lessConfig = Morfy::$plugins['less']['config'];
 
