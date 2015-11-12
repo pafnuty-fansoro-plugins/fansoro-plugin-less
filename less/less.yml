@@ -1,5 +1,5 @@
 name: Less Compiler
-version: 2.0.0
+version: 2.1.0-dev
 description: "Less Compiler Plugin for Morfy CMS"
 author:
   name: Pavel Belousov

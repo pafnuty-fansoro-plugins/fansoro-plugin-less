@@ -16,6 +16,7 @@ Action::add('getCss', function () {
 	require_once PLUGINS_PATH . '/less/lessCompiler.php';
 
 	$lessConfig = Config::get('plugins.less.config');
+	
 
 	// Assets folder into theme folder, which contains a folder less
 	$assetsFolder = (isset($lessConfig['assetsFolder'])) ? $lessConfig['assetsFolder'] : '/assets';
@@ -32,7 +33,7 @@ Action::add('getCss', function () {
 	// Generate Sourse Map
 	$sourceMap = (isset($lessConfig['sourceMap'])) ? $lessConfig['sourceMap'] : false;
 
-	$localSpaceFolder = '/themes/' . Config::get('theme') . $assetsFolder;
+	$localSpaceFolder = '/themes/' . Config::get('system.theme') . $assetsFolder;
 
 	$compile = new lessCompiler(ROOT_DIR, $localSpaceFolder, $fileNames, $outputPath, $compress, $sourceMap);
 
