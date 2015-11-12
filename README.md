@@ -1,6 +1,6 @@
 # Less Compiler Plugin for [Morfy CMS](http://morfy.org/)
 
-![version](https://img.shields.io/badge/version-2.0.0-brightgreen.svg?style=flat-square "Version")
+![version](https://img.shields.io/badge/version-2.1.0--dev-brightgreen.svg?style=flat-square "Version")
 ![DLE](https://img.shields.io/badge/Morfy-1.1.x-green.svg?style=flat-square "Morfy Version")
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://raw.githubusercontent.com/pafnuty/morfy-less/master/LICENSE)
 
@@ -13,7 +13,7 @@ Plugin to compile LESS files in Morfy CMS.
 - Easy use.
 - Cache compiled files.
 - Recompile only when changes to the less files.
-- Use the [best php class](https://github.com/pafnuty/less.php) for less compile.
+- Use the [best php class](https://github.com/oyejorge/less.php) for less compile.
 
 
 ## Install & Configuration

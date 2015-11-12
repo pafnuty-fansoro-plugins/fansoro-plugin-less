@@ -5,17 +5,17 @@
  *  @package Morfy
  *  @subpackage Plugins
  *  @author Pavel Belousov / pafnuty
- *  @version 2.0.0
+ *  @version 2.1.0-dev
  *  @license https://github.com/pafnuty/morfy-less/blob/master/LICENSE MIT
  *
  */
 
 
-Morfy::addAction('getCss', function () {
+Action::add('getCss', function () {
 	require_once PLUGINS_PATH . '/less/Less/Less.php';
 	require_once PLUGINS_PATH . '/less/lessCompiler.php';
 
-	$lessConfig = Morfy::$plugins['less']['config'];
+	$lessConfig = Config::get('plugins.less.config');
 
 	// Assets folder into theme folder, which contains a folder less
 	$assetsFolder = (isset($lessConfig['assetsFolder'])) ? $lessConfig['assetsFolder'] : '/assets';
@@ -32,7 +32,7 @@ Morfy::addAction('getCss', function () {
 	// Generate Sourse Map
 	$sourceMap = (isset($lessConfig['sourceMap'])) ? $lessConfig['sourceMap'] : false;
 
-	$localSpaceFolder = '/themes/' . Morfy::$site['theme'] . $assetsFolder;
+	$localSpaceFolder = '/themes/' . Config::get('theme') . $assetsFolder;
 
 	$compile = new lessCompiler(ROOT_DIR, $localSpaceFolder, $fileNames, $outputPath, $compress, $sourceMap);
 
