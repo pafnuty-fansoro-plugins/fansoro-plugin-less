@@ -1,12 +1,12 @@
-# Less Compiler Plugin for [Morfy CMS](http://morfy.org/)
+# Less Compiler Plugin for [Fansoro CMS](http://fansoro.org/)
 
 ![version](https://img.shields.io/badge/version-2.1.0--dev-brightgreen.svg?style=flat-square "Version")
-![DLE](https://img.shields.io/badge/Morfy-1.1.x-green.svg?style=flat-square "Morfy Version")
-[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://raw.githubusercontent.com/pafnuty/morfy-less/master/LICENSE)
+![Fansoro](https://img.shields.io/badge/Fansoro-1.1.x-green.svg?style=flat-square "Fansoro Version")
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://raw.githubusercontent.com/pafnuty/fansoro-less/master/LICENSE)
 
-Plugin to compile LESS files in Morfy CMS.
+Plugin to compile LESS files in Fansoro CMS.
 
-**If You use the old version of Morfy :older_man: go to [1.0.0 branch](https://github.com/pafnuty/morfy-less/tree/v1.0.0)**
+**If You use the old version of Fansoro :older_man: go to [1.0.0 branch](https://github.com/pafnuty/fansoro-less/tree/v1.0.0)**
 
 
 ## Advantages
@@ -17,12 +17,12 @@ Plugin to compile LESS files in Morfy CMS.
 
 
 ## Install & Configuration
-See [this instruction](http://morfy.org/documentation/plugins/plugins-installation)
+See [this instruction](http://fansoro.org/documentation/plugins/plugins-installation)
 
 
 ## Usage
 - Place less files in the folder **/themes/YOUR_THEME/less/**
-- Place `{Morfy::runAction('getCss')}` in **layout.tpl** file.
+- Place `{Fansoro::runAction('getCss')}` in **layout.tpl** file.
 
 **Example:**
 
@@ -30,7 +30,7 @@ See [this instruction](http://morfy.org/documentation/plugins/plugins-installati
 {* layout.tpl *}
 <head>
     ...
-    {Morfy::runAction('getCss')}
+    {Fansoro::runAction('getCss')}
     <link href="{$.site.url}/themes/{$.site.theme}/assets/css/bootstrap.css" rel="stylesheet">
     ...
 </head>
@@ -89,9 +89,9 @@ config:
 
 **If you need to visually make the error output of compilation in accordance with your requirements.**
 
-1. Copy `-less-error.css` from `less` folder to `/themes/PATH_TO_OUR_THEME/PATH_TO_ASSETS_FOLDER/css/` folder into Morfy CMS. 
+1. Copy `-less-error.css` from `less` folder to `/themes/PATH_TO_OUR_THEME/PATH_TO_ASSETS_FOLDER/css/` folder into Fansoro CMS. 
 2. Edit it as necessary.
 
 
 ## License 
-[MIT](https://github.com/pafnuty/morfy-less/blob/master/LICENSE)
+[MIT](https://github.com/pafnuty/fansoro-less/blob/master/LICENSE)

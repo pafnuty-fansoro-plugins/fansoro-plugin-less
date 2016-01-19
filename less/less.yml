@@ -1,12 +1,12 @@
 name: Less Compiler
-version: 2.1.0-dev
-description: "Less Compiler Plugin for Morfy CMS"
+version: 2.2.0
+description: "Less Compiler Plugin for Fansoro CMS"
 author:
   name: Pavel Belousov
   email: pafnuty10@gmail.com
   url: http://pafnuty.name
-homepage: https://github.com/pafnuty/morfy-less
-bugs: https://github.com/pafnuty/morfy-less/issues
+homepage: https://github.com/pafnuty/fansoro-less
+bugs: https://github.com/pafnuty/fansoro-less/issues
 license: MIT
 
 # Plugin settings

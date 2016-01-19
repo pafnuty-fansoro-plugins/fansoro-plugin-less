@@ -1,12 +1,12 @@
 <?php
 /**
- *  Less Compiler for Morfy
+ *  Less Compiler for Fansoro
  *
- *  @package Morfy
+ *  @package Fansoro
  *  @subpackage Plugins
  *  @author Pavel Belousov / pafnuty
- *  @version 2.1.0-dev
- *  @license https://github.com/pafnuty/morfy-less/blob/master/LICENSE MIT
+ *  @version 2.2.0
+ *  @license https://github.com/pafnuty/fansoro-less/blob/master/LICENSE MIT
  *
  */
 
